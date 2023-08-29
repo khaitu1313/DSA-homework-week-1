@@ -5,6 +5,13 @@ using namespace std;
 
 int buyCar(int* nums, int length, int k){
     int max;
+    for(int i=0;i<length;i++){
+        if(nums[i] == k){
+            max = 1;
+            break;
+        }
+    }
+
     int count = 0;
     int sum = 0;
     for(int i=0;i<length;i++){
@@ -13,7 +20,9 @@ int buyCar(int* nums, int length, int k){
             count++;
         }else if(sum + nums[i] == k){
             count++;
-            max = count;
+            if(count >= max){
+                max = count;
+            }
             count = 0;
             sum = 0;
         }
